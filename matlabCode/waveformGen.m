@@ -1,4 +1,4 @@
-function [t,s] = WaveformGen(time,interval,amp,frequency,phase,dc,noise,type)
+function [t,s] = waveformGen(time,interval,amp,frequency,phase,dc,noise,type)
 
 %FUNCTION_NAME - Generates a Specified waveform
 %
@@ -25,8 +25,7 @@ function [t,s] = WaveformGen(time,interval,amp,frequency,phase,dc,noise,type)
 %
 % Example: 
 %    WaveformGen(10,0.01,1,1,0,0,0.1,'triangle');
-%    WaveformGen(10,0.01,1,1,0,0,0,'sq');
-%    Line 3 of example
+%    WaveformGen(10,0.01,1,1,0,0,0,'square');
 %
 % Other m-files required: none
 % Subfunctions: none
@@ -68,6 +67,8 @@ end
 
 %noise addition
 s = s + (-noise + (2*noise)*rand(1,length(t)));
+s = s';
+t = t';
 
 %Plot and save waveform
 inpt = input ('View Waveform? (Y/N): ', 's');
@@ -76,11 +77,13 @@ if strcmp(inpt, 'y') || strcmp(inpt, 'Y')
   grid
 end
  
+
+%Save saveform
 inpt = input ('Save Waveform? (Y/N): ', 's');
 if strcmp(inpt, 'y') || strcmp(inpt, 'Y')
   inpt = input ('File Name: ', 's');
   
-  A = [t',s'];  
+  A = [t,s];  
   writematrix(A,inpt);
  
 end 
