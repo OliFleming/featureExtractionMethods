@@ -6,6 +6,7 @@ function [t,s] = WaveformGen(time,interval,amp,frequency,phase,dc,noise,type)
 %
 % Inputs:
 %    time - number of data points to producs
+%    interval - time space between datapointss
 %    amp - signal amplitude
 %    frequency - frequency of wave if applicable
 %    phase - Phase offset of wave in radians
