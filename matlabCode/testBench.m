@@ -24,37 +24,46 @@ time = 10;
 interval = 0.01;
 amp = 5;
 frequency = 1;
-phase = 0
-dc = 0
+phase = 0;
+dc = 0;
 noise = 0.1;
 type = 'sin';
 
 %generate waveform.
-[t,s] = waveformGen(time,interval,amp,frequency,phase,dc,noise,type)
+%insert waveform generation here
+A = readmatrix('smallnoise_sin.csv');
 
+t = A(:,1);
+s = A(:,2);
+plot(t, s)
+grid
 
 %Load test data;
 
 %Initial feature Variables
-winsize = 100;
-wininc = 50;
+winsize = 2000;
+wininc = 2000;
 datawin = 1;
 dispstatus = 1;
+deadzone = 0.01;
 
 %---- RMS ----
 rms_feat = getrmsfeat(s,winsize,wininc,datawin,dispstatus);
 
 
 %---- SSC ----
-deadzone = 0.01;
 ssc_feat = getsscfeat(s,deadzone,winsize,wininc,datawin,dispstatus);
 
-disp('rms_feat\n')
+zc_feat = getzcfeat(s,deadzone,winsize,wininc,1);
+
+disp('rms_feat')
 disp(rms_feat)
 
-disp('ssc_feat\n')
+disp('ssc_feat')
 disp(ssc_feat)
 
+disp('zcc_feat')
+disp(zc_feat)
 
 
 

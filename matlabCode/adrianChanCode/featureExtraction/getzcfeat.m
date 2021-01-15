@@ -65,7 +65,9 @@ for i = 1:numwin
    y = x(st:en,:).*repmat(datawin,1,Nsignals);
    
    y = (y > deadzone) - (y < -deadzone);
-
+   
+   
+   
    % forces the zeros towards either the positive or negative
    % the filter is chosen so that the most recent +1 or -1 has
    % the most influence on the state of the zero.
