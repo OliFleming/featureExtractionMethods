@@ -64,8 +64,8 @@ def getzcfeat( x , deadzone , winsize , wininc , datawin = None ):
     #allocate memory
     feat = np.zeros( (numwin,Nsignals) );
     
-    st = 1;
-    en = winsize+1;
+    st = 0;
+    en = winsize;
     
     
     for i in range(numwin):

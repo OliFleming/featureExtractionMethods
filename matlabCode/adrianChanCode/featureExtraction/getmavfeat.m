@@ -61,7 +61,7 @@ for i = 1:numwin
     if dispstatus
         waitbar(i/numwin);
     end
-    curwin = x(st:en,:).*repmat(datawin,1,Nsignals);
+    curwin = x(st:en,:).*repmat(datawin,1,Nsignals);   
     feat(i,:) = mean(abs(curwin));
    
     st = st + wininc;

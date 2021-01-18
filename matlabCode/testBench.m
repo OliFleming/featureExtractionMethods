@@ -41,11 +41,11 @@ grid
 %Load test data;
 
 %Initial feature Variables
-winsize = 2000;
-wininc = 2000;
+winsize = 500;
+wininc = 500;
 datawin = 1;
 dispstatus = 1;
-deadzone = 0.01;
+deadzone = 0.1;
 
 %---- RMS ----
 rms_feat = getrmsfeat(s,winsize,wininc,datawin,dispstatus);
@@ -54,7 +54,17 @@ rms_feat = getrmsfeat(s,winsize,wininc,datawin,dispstatus);
 %---- SSC ----
 ssc_feat = getsscfeat(s,deadzone,winsize,wininc,datawin,dispstatus);
 
+%---- Zero crossinf -----
 zc_feat = getzcfeat(s,deadzone,winsize,wininc,1);
+
+
+% ---- MAV Feat -------
+mav_feat = getmavfeat(s,winsize,wininc,1);
+
+% ---- IAV Feat -------
+iav_feat = getiavfeat(s,winsize,wininc,1);
+
+format long
 
 disp('rms_feat')
 disp(rms_feat)
@@ -65,6 +75,10 @@ disp(ssc_feat)
 disp('zcc_feat')
 disp(zc_feat)
 
+disp('mav_feat')
+disp(mav_feat)
 
+disp('iav_feat')
+disp(iav_feat)
 
 %------------- END OF CODE --------------
